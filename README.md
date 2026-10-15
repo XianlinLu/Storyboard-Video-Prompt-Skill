@@ -12,7 +12,10 @@ It captures the workflow used for reliable storyboard generation:
 - convert all displayed timing to contiguous integer seconds with round-half-up;
 - use the previous generated video as the next input within a scene;
 - reset that continuation chain at every scene boundary;
-- place reference media and validate the completed document;
+- map names to approved front/side/back character sheets without guessing identity;
+- match every environment reference to the exact scripted scene;
+- preserve existing numbered `@image` and `@video` bindings while placing media;
+- validate the completed document by reading it back;
 - answer in Simplified Chinese for Chinese requests and English for English requests.
 
 The instructions are vendor-neutral, so any agent with document/file capabilities can use them. Lark/Feishu, local Markdown/JSON, and other spreadsheet/document systems are supported through the agent's available tools.
@@ -96,3 +99,7 @@ Within one scene, every shot after the first uses the immediately previous gener
 - English: `Continue this @video.`
 
 The first shot of every new scene uses new scene references and does not use that marker.
+
+## Character and scene reference rule
+
+Build explicit `character name -> approved three-view` and `scene name -> approved environment image` mappings before editing. Prefer a full-body front/side/back sheet; a composite with a clear face close-up is ideal. Never match a person by appearance alone, and never substitute a similar-looking location for the source scene. If an existing prompt refers to numbered inputs, replace assets in place or append supplemental references after them so the numbering remains stable.

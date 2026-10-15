@@ -97,7 +97,20 @@ At a new scene, do not use the previous scene's last video and do not include th
 
 ### 7. Place input media
 
-For the first shot of a scene, place the minimum sufficient environment and character references in the input column. For later shots, place the previous generated video first, then only new references needed for characters, props, wardrobe, or composition.
+Build an explicit asset map before inserting anything:
+
+- `character name or role ID -> approved character reference`;
+- `scene name -> approved environment reference`.
+
+Resolve both maps from names, labels, row ownership, or source metadata. Never identify a character by appearance alone. If a name-to-image relationship is not explicit, stop and ask instead of guessing.
+
+Prefer a character three-view showing the front, side, and back at full-body scale. A combined sheet that also includes a clear face close-up is even better. Keep one approved three-view for the same character across shots unless the source explicitly changes age, costume, hairstyle, or identity. Attach only characters who are visually present in the shot; dialogue that merely mentions a person does not require that person's reference.
+
+Use the environment image assigned to the exact source scene. Verify the scene name, interior/exterior, time of day, architecture, and important set elements. Do not substitute a visually similar location. If one final shot intentionally spans two source scenes, attach both approved environment references in chronological order.
+
+For the first shot of a scene, place the approved environment and required character three-views in the input column. For later shots, place the previous generated video first. Repeat the approved environment and visible-character three-views when the user requests references on every row, when the target template already follows that pattern, or when the generation workflow needs them; otherwise add only new references needed for characters, props, wardrobe, or composition.
+
+Preserve existing `@image` and `@video` numbering. Replace an existing reference in place, or append supplemental references after the numbered assets; never insert before a referenced asset and silently change its index.
 
 When the generated video does not exist yet, insert a localized placeholder such as `待粘贴：上一条生成视频` or `To attach: previous generated video`. Do not pretend a missing asset was attached.
 
@@ -126,6 +139,9 @@ Confirm all of the following:
 - later rows in each scene have both;
 - prompts do not contain ambiguous alternatives;
 - input assets and `@` references exist or are marked as placeholders;
+- each character name resolves to the approved three-view, with no identity swaps;
+- each environment reference matches the exact source scene rather than a similar substitute;
+- existing numbered `@image`/`@video` references still point to the same intended assets;
 - table count, scene count, and unrelated document content remain unchanged when auditing or editing.
 
 For structured work, create a temporary plan using [storyboard-plan-example.json](references/storyboard-plan-example.json) and validate it with [validate_storyboard_plan.py](scripts/validate_storyboard_plan.py):

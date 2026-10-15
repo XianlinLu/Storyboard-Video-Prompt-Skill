@@ -49,7 +49,13 @@
 ## Assets and delivery
 
 - [ ] Every `@` reference points to an attached asset or a clearly labeled placeholder.
-- [ ] First scene rows contain sufficient environment and character references.
-- [ ] Later rows avoid redundant references unless they are needed for continuity.
+- [ ] A name/role-to-image map was built from explicit labels; no character was identified by appearance alone.
+- [ ] Every visible character uses the approved front/side/back three-view; a face close-up plus three-view composite is preferred when available.
+- [ ] The same character sheet is reused across shots unless the source explicitly changes age, costume, hairstyle, or identity.
+- [ ] Every environment image is the authoritative image for the exact source scene, including interior/exterior, time of day, architecture, and key set elements.
+- [ ] Multi-location shots contain all required scene images in narrative order.
+- [ ] First scene rows contain sufficient approved environment and character references.
+- [ ] Later rows begin with the previous video and repeat scene/character references only when the user or target workflow requires them.
+- [ ] Replacements preserve existing `@image`/`@video` numbering and bindings.
 - [ ] Live-document edits were read back and verified.
 - [ ] The completion report states counts, merges, timing corrections, and unresolved placeholders.

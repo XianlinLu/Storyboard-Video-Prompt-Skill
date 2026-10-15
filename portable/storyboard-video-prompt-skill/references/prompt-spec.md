@@ -122,17 +122,30 @@ Avoid:
 
 ## Input media rules
 
+### Identity and scene mapping
+
+Create two mappings before document edits:
+
+1. `character name or role ID -> approved three-view`;
+2. `scene name -> approved environment image`.
+
+Use explicit source labels or metadata. Do not infer a person's identity from face, clothing, age, or resemblance. When several assets exist for one character, prefer the sheet with full-body front, side, and back views; prefer a composite that also includes a face close-up when available. Reuse the same approved sheet until the script explicitly changes the character's visual state.
+
+For environment images, require the exact source scene. Confirm scene name, interior/exterior, time of day, architecture, and key set pieces. Similar-looking locations are not interchangeable. A shot spanning two locations receives both authoritative images in narrative order.
+
+Before replacing or inserting media, inspect prompt references such as `@image1`, `@图片2`, and `@video`. Preserve their order: replace the intended asset in place or append supplemental sheets after the numbered inputs.
+
 Scene-first row:
 
-- environment reference;
-- required character references;
+- approved environment reference for the exact scene;
+- approved three-views for characters visible in the shot;
 - optional prop or wardrobe references;
 - no previous-scene video.
 
 Later row in the same scene:
 
 - previous generated video first;
-- only new references necessary for the next beat;
+- repeat the approved scene and visible-character references when requested on every row or required by the target workflow; otherwise include only new references necessary for the next beat;
 - continuation marker at the start of the prompt.
 
 If the target interface binds an uploaded asset to an `@` mention, use its exact bound name. Never refer to `@image3` or `@video` unless that asset exists or is explicitly marked for later attachment.
